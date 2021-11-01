@@ -1,0 +1,38 @@
+package az.busdriver.busanddriverrelation.controller;
+
+import az.busdriver.busanddriverrelation.dto.request.BusRequestDto;
+import az.busdriver.busanddriverrelation.dto.response.BusResponseDto;
+import az.busdriver.busanddriverrelation.service.BusService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("api")
+@RequiredArgsConstructor
+public class BusController {
+
+    private final BusService busService;
+
+    @GetMapping("buses")
+    public List<BusResponseDto> getAllBuses() {
+        return busService.getAllBusDrivers();
+    }
+
+    @GetMapping("buses/{busId}")
+    public BusResponseDto getBus(@PathVariable long busId) {
+        return busService.getBusById(busId);
+    }
+
+    @DeleteMapping("buses/{busId}")
+    public void delete(@PathVariable long busId) {
+        busService.deleteBus(busId);
+    }
+
+    @PostMapping("buses")
+    public long newBusId(@RequestBody BusRequestDto busRequestDto) {
+        return busService.addNewBus(busRequestDto);
+    }
+
+}
