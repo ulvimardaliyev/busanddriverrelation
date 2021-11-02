@@ -1,16 +1,18 @@
 package az.busdriver.busanddriverrelation.dao.repository;
 
 import az.busdriver.busanddriverrelation.dao.entity.Bus;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface BusRepository extends JpaRepository<Bus, Long> {
+public interface BusRepository extends CrudRepository<Bus, Long> {
 
-    //Bus findById(long busId);
+    Bus findBusByBusId(long busId);
 
-   /* @Override
+    @Override
     List<Bus> findAll();
 
-    void deleteByBus_id(long driverId);*/
+    void deleteBusByBusId(long driverId);
 }

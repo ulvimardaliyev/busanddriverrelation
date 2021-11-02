@@ -3,8 +3,6 @@ package az.busdriver.busanddriverrelation.dto.request;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -16,5 +14,4 @@ public class BusRequestDto {
     String manufacturer;
     int seatCount;
     boolean hasElectricEngine;
-    List<Long> busDriversId;
 }

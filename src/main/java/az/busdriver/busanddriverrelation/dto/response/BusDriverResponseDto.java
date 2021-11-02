@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BusDriverResponseDto {
-    long driver_id;
+    long busDriverId;
     String driverName;
     String driverSurname;
     ExperienceLevel experienceLevel;

@@ -15,4 +15,5 @@ public interface BusDriverService {
 
     void deleteBusDriver(long busDriverId);
 
+    void addBusToBusDriver(Long busDriverId, Long busId);
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BusResponseDto {
-    long bus_id;
+    long busId;
     String busModel;
     String manufacturer;
     int seatCount;

@@ -14,12 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "driver_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "busDriverId")
 public class BusDriver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long driver_id;
+    long busDriverId;
     String driverName;
     String driverSurname;
     ExperienceLevel experienceLevel;

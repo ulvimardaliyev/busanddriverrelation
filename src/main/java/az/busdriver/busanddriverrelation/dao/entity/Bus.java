@@ -14,17 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "bus_id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "busId")
 public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long bus_id;
+    long busId;
     String busModel;
     String manufacturer;
     int seatCount;
     boolean hasElectricEngine;
     @ManyToMany
-    @JoinTable(name = "bus_busdriver", joinColumns = @JoinColumn(name = "bus_id", referencedColumnName = "bus_id"),
-            inverseJoinColumns = @JoinColumn(name = "driver_id", referencedColumnName = "driver_id"))
+    @JoinTable(name = "bus_busdriver",
+            joinColumns = @JoinColumn(name = "busId", referencedColumnName = "busId"),
+            inverseJoinColumns = @JoinColumn(name = "busDriverId", referencedColumnName = "busDriverId"))
     List<BusDriver> busDrivers;
 }

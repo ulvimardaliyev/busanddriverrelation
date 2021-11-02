@@ -4,8 +4,6 @@ import az.busdriver.busanddriverrelation.dao.entity.ExperienceLevel;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,5 +13,4 @@ public class BusDriverRequestDto {
     String driverName;
     String driverSurname;
     ExperienceLevel experienceLevel;
-    List<Long> busesId;
 }

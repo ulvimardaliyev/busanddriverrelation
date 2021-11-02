@@ -7,11 +7,13 @@ import java.util.List;
 
 public interface BusService {
 
-    List<BusResponseDto> getAllBusDrivers();
+    List<BusResponseDto> getAllBuses();
 
     BusResponseDto getBusById(long busId);
 
     long addNewBus(BusRequestDto busRequestDto);
 
     void deleteBus(long busId);
+
+    BusResponseDto addBusDriverToBus(Long busId, Long busDriverId);
 }

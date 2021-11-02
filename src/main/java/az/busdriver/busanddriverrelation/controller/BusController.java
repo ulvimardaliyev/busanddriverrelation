@@ -17,7 +17,7 @@ public class BusController {
 
     @GetMapping("buses")
     public List<BusResponseDto> getAllBuses() {
-        return busService.getAllBusDrivers();
+        return busService.getAllBuses();
     }
 
     @GetMapping("buses/{busId}")
@@ -33,6 +33,13 @@ public class BusController {
     @PostMapping("buses")
     public long newBusId(@RequestBody BusRequestDto busRequestDto) {
         return busService.addNewBus(busRequestDto);
+    }
+    //TODO write PUT Method
+
+    @PutMapping("buses/{busId}/driver/{driverId}")
+    public BusResponseDto addDriverToBus(@PathVariable Long busId,
+                                         @PathVariable Long driverId) {
+        return busService.addBusDriverToBus(busId, driverId);
     }
 
 }
