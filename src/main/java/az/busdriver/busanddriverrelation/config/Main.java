@@ -1,21 +1,14 @@
 package az.busdriver.busanddriverrelation.config;
 
-import az.busdriver.busanddriverrelation.dao.entity.BusDriver;
-import az.busdriver.busanddriverrelation.dao.entity.ExperienceLevel;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Main {
 
 
     public static void main(String[] args) {
-        new Main().testMe();
-        new Main().testMe();
+        /*new Main().testMe();
+        new Main().testMe();*/
     }
 
-    public void testMe() {
+   /* public void testMe() {
 
 
         BusDriver busDriver1 = BusDriver.builder()
@@ -47,5 +40,5 @@ public class Main {
                         )
                         .collect(Collectors.toList());
         System.out.println(drivers);
-    }
+    }*/
 }

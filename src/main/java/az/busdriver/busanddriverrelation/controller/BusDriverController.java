@@ -36,4 +36,9 @@ public class BusDriverController {
     }
 
     //TODO write PUT Method
+    @PutMapping("busdrivers/{busDriverId}/buses{busId}")
+    public BusDriverResponseDto addBusToBusDriver(@PathVariable Long busDriverId,
+                                                  @PathVariable Long busId) {
+        return busDriverService.addBusToBusDriver(busDriverId, busId);
+    }
 }
