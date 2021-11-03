@@ -1,5 +1,6 @@
 package az.busdriver.busanddriverrelation.service.impl;
 
+import az.busdriver.busanddriverrelation.dao.entity.Bus;
 import az.busdriver.busanddriverrelation.dao.entity.BusDriver;
 import az.busdriver.busanddriverrelation.dao.repository.BusDriverRepository;
 import az.busdriver.busanddriverrelation.dao.repository.BusRepository;
@@ -47,7 +48,11 @@ public class BusDriverServiceImpl implements BusDriverService {
     @Override
     public void deleteBusDriver(long busDriverId) {
         BusDriver currentBusDriver = busDriverRepository.findBusDriverByBusDriverId(busDriverId);
-        currentBusDriver.getBuses().clear();
+        var buses = currentBusDriver.getBuses();
+        for (Bus bus : buses) {
+            bus.getBusDrivers().remove(currentBusDriver);
+        }
+
         busDriverRepository.deleteBusDriverByBusDriverId(busDriverId);
     }
 
