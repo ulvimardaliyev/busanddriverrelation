@@ -46,6 +46,8 @@ public class BusDriverServiceImpl implements BusDriverService {
 
     @Override
     public void deleteBusDriver(long busDriverId) {
+        BusDriver currentBusDriver = busDriverRepository.findBusDriverByBusDriverId(busDriverId);
+        currentBusDriver.getBuses().clear();
         busDriverRepository.deleteBusDriverByBusDriverId(busDriverId);
     }
 

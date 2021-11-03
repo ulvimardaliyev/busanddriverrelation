@@ -51,6 +51,8 @@ public class BusServiceImpl implements BusService {
 
     @Override
     public void deleteBus(long busId) {
+        Bus currentBus = busRepository.findBusByBusId(busId);
+        currentBus.getBusDrivers().clear();
         busRepository.deleteBusByBusId(busId);
     }
 
@@ -63,11 +65,9 @@ public class BusServiceImpl implements BusService {
             driverList.add(currentDriver);
             currentBus.setBusDrivers(driverList);
         } else if (!currentBus.getBusDrivers().contains(currentDriver)) {
-
             currentBus.getBusDrivers().add(currentDriver);
         }
         var updatedBusWithDriver = busRepository.save(currentBus);
         return busMapper.convertBusToBusResponseDto(updatedBusWithDriver);
-
     }
 }
