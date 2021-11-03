@@ -39,6 +39,9 @@ public class BusController {
     @PutMapping("buses/{busId}/driver/{driverId}")
     public BusResponseDto addDriverToBus(@PathVariable Long busId,
                                          @PathVariable Long driverId) {
+
+        if (busId <= 0 && driverId <= 0)
+            throw new RuntimeException("Input id is not valid");
         return busService.addBusDriverToBus(busId, driverId);
     }
 

@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -57,10 +58,14 @@ public class BusServiceImpl implements BusService {
     public BusResponseDto addBusDriverToBus(Long busId, Long busDriverId) {
         Bus currentBus = busRepository.findBusByBusId(busId);
         BusDriver currentDriver = busDriverRepository.findBusDriverByBusDriverId(busDriverId);
+        if (currentBus.getBusDrivers() == null || currentBus.getBusDrivers().isEmpty()) {
+            List<BusDriver> driverList = new ArrayList<>();
+            driverList.add(currentDriver);
+            currentBus.setBusDrivers(driverList);
+        } else if (!currentBus.getBusDrivers().contains(currentDriver)) {
 
-
-        currentBus.getBusDrivers().add(currentDriver);
-
+            currentBus.getBusDrivers().add(currentDriver);
+        }
         var updatedBusWithDriver = busRepository.save(currentBus);
         return busMapper.convertBusToBusResponseDto(updatedBusWithDriver);
 
