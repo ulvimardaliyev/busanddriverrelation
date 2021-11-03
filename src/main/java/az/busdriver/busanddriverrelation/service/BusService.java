@@ -16,4 +16,6 @@ public interface BusService {
     void deleteBus(long busId);
 
     BusResponseDto addBusDriverToBus(Long busId, Long busDriverId);
+
+    BusResponseDto addBusToGarage(Long busGarageId, Long busId);
 }

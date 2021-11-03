@@ -45,4 +45,9 @@ public class BusController {
         return busService.addBusDriverToBus(busId, driverId);
     }
 
+    @PutMapping("busgarages/{busGarageId}/bus/{busId}")
+    public BusResponseDto busResponseDto(@PathVariable Long busGarageId,
+                                         @PathVariable Long busId) {
+        return busService.addBusToGarage(busGarageId, busId);
+    }
 }

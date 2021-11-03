@@ -19,7 +19,7 @@ public class BusDriver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long busDriverId;
+    Long busDriverId;
     String driverName;
     String driverSurname;
     ExperienceLevel experienceLevel;

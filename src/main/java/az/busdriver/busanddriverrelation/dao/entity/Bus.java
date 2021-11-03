@@ -18,7 +18,7 @@ import java.util.List;
 public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long busId;
+    Long busId;
     String busModel;
     String manufacturer;
     int seatCount;
@@ -28,4 +28,8 @@ public class Bus {
             joinColumns = @JoinColumn(name = "busId", referencedColumnName = "busId"),
             inverseJoinColumns = @JoinColumn(name = "busDriverId", referencedColumnName = "busDriverId"))
     List<BusDriver> busDrivers;
+
+    @ManyToOne
+    @JoinColumn(name = "busGarageId", referencedColumnName = "busGarageId")
+    BusGarage busGarages;
 }

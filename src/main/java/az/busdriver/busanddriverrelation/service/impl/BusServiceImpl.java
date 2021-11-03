@@ -2,7 +2,9 @@ package az.busdriver.busanddriverrelation.service.impl;
 
 import az.busdriver.busanddriverrelation.dao.entity.Bus;
 import az.busdriver.busanddriverrelation.dao.entity.BusDriver;
+import az.busdriver.busanddriverrelation.dao.entity.BusGarage;
 import az.busdriver.busanddriverrelation.dao.repository.BusDriverRepository;
+import az.busdriver.busanddriverrelation.dao.repository.BusGarageRepository;
 import az.busdriver.busanddriverrelation.dao.repository.BusRepository;
 import az.busdriver.busanddriverrelation.dto.request.BusRequestDto;
 import az.busdriver.busanddriverrelation.dto.response.BusResponseDto;
@@ -22,7 +24,7 @@ public class BusServiceImpl implements BusService {
     private final BusRepository busRepository;
     private final BusMapper busMapper;
     private final BusDriverRepository busDriverRepository;
-
+    private final BusGarageRepository busGarageRepository;
 
     @Override
     public List<BusResponseDto> getAllBuses() {
@@ -69,5 +71,15 @@ public class BusServiceImpl implements BusService {
         }
         var updatedBusWithDriver = busRepository.save(currentBus);
         return busMapper.convertBusToBusResponseDto(updatedBusWithDriver);
+    }
+
+    @Override
+    public BusResponseDto addBusToGarage(Long busGarageId, Long busId) {
+        BusGarage busGarage = busGarageRepository.findBusGarageByBusGarageId(busGarageId);
+        Bus bus = busRepository.findBusByBusId(busId);
+
+        bus.setBusGarages(busGarage);
+        busRepository.save(bus);
+        return busMapper.convertBusToBusResponseDto(bus);
     }
 }

@@ -36,14 +36,14 @@ public class BusAndDriverRelationApplication implements CommandLineRunner {
                 .seatCount(24)
                 .busModel("Vita")
                 .hasElectricEngine(true)
-                .busId(1)
+                .busId(1L)
                 .build();
         BusDriver busDriver = BusDriver
                 .builder()
                 .driverSurname("Mardaliyev")
                 .driverName("Ulvi")
                 .experienceLevel(ExperienceLevel.MIDDLE)
-                .busDriverId(1)
+                .busDriverId(1L)
                 .build();
         busDriverList.add(busDriver);
         busDriver.setBuses(busList);
