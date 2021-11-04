@@ -1,20 +1,13 @@
 package az.busdriver.busanddriverrelation;
 
-import az.busdriver.busanddriverrelation.dao.entity.Bus;
-import az.busdriver.busanddriverrelation.dao.entity.BusDriver;
-import az.busdriver.busanddriverrelation.dao.entity.ExperienceLevel;
 import az.busdriver.busanddriverrelation.dao.repository.BusDriverRepository;
 import az.busdriver.busanddriverrelation.dao.repository.BusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @SpringBootApplication
-public class BusAndDriverRelationApplication implements CommandLineRunner {
+public class BusAndDriverRelationApplication /*implements CommandLineRunner*/ {
 
     @Autowired
     private BusDriverRepository busDriverRepository;
@@ -25,7 +18,7 @@ public class BusAndDriverRelationApplication implements CommandLineRunner {
         SpringApplication.run(BusAndDriverRelationApplication.class, args);
     }
 
-    @Override
+    /*@Override
     public void run(String... args) throws Exception {
         List<BusDriver> busDriverList = new ArrayList<>();
         List<Bus> busList = new ArrayList<>();
@@ -52,5 +45,5 @@ public class BusAndDriverRelationApplication implements CommandLineRunner {
         bus.setBusDrivers(busDriverList);
 
         busRepository.save(bus);
-    }
+    }*/
 }

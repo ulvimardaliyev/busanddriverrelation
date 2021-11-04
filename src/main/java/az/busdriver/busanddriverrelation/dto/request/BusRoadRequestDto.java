@@ -8,11 +8,8 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BusRequestDto {
-
-    String busModel;
-    String manufacturer;
-    int seatCount;
-    boolean hasElectricEngine;
-    Long busRoadId;
+public class BusRoadRequestDto {
+    String startPoint;
+    String endPoint;
+    double roadLength;
 }

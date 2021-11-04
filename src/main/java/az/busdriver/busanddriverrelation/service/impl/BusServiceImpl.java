@@ -3,9 +3,11 @@ package az.busdriver.busanddriverrelation.service.impl;
 import az.busdriver.busanddriverrelation.dao.entity.Bus;
 import az.busdriver.busanddriverrelation.dao.entity.BusDriver;
 import az.busdriver.busanddriverrelation.dao.entity.BusGarage;
+import az.busdriver.busanddriverrelation.dao.entity.BusRoad;
 import az.busdriver.busanddriverrelation.dao.repository.BusDriverRepository;
 import az.busdriver.busanddriverrelation.dao.repository.BusGarageRepository;
 import az.busdriver.busanddriverrelation.dao.repository.BusRepository;
+import az.busdriver.busanddriverrelation.dao.repository.BusRoadRepository;
 import az.busdriver.busanddriverrelation.dto.request.BusRequestDto;
 import az.busdriver.busanddriverrelation.dto.response.BusResponseDto;
 import az.busdriver.busanddriverrelation.mapstruct.BusMapper;
@@ -25,6 +27,7 @@ public class BusServiceImpl implements BusService {
     private final BusMapper busMapper;
     private final BusDriverRepository busDriverRepository;
     private final BusGarageRepository busGarageRepository;
+    private final BusRoadRepository busRoadRepository;
 
     @Override
     public List<BusResponseDto> getAllBuses() {
@@ -40,13 +43,8 @@ public class BusServiceImpl implements BusService {
 
     @Override
     public long addNewBus(BusRequestDto busRequestDto) {
-        Bus bus = Bus
-                .builder()
-                .seatCount(busRequestDto.getSeatCount())
-                .busModel(busRequestDto.getBusModel())
-                .hasElectricEngine(busRequestDto.isHasElectricEngine())
-                .manufacturer(busRequestDto.getManufacturer())
-                .build();
+        BusRoad busRoad = busRoadRepository.findBusRoadByRoadId(busRequestDto.getBusRoadId());
+        Bus bus = busMapper.convertRequestToBus(busRequestDto, busRoad);
         var id = busRepository.save(bus).getBusId();
         return id;
     }

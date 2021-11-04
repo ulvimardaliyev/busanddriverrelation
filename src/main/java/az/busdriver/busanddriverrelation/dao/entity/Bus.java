@@ -32,4 +32,8 @@ public class Bus {
     @ManyToOne
     @JoinColumn(name = "busGarageId", referencedColumnName = "busGarageId")
     BusGarage busGarages;
+
+    @OneToOne
+    @JoinColumn(name = "roadId", referencedColumnName = "roadId")
+    BusRoad busRoad;
 }
